@@ -77,6 +77,7 @@ export function NetworkGraph() {
 
             // Add a drag behavior.
             node.call(
+                // @ts-ignore ts-ignore
                 d3
                     .drag<SVGCircleElement, Node>()
                     .on("start", dragstarted)
