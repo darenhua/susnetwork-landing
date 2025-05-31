@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Inter as Inter_Mono, Londrina_Shadow } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const londrina = Londrina_Shadow({
@@ -35,6 +36,7 @@ export default function RootLayout({
                 className={`${inter.variable} ${interMono.variable} ${londrina.variable} antialiased`}
             >
                 {children}
+                <Toaster />
             </body>
         </html>
     );
