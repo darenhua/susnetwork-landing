@@ -1,103 +1,108 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { NetworkGraph } from "./Network";
+import Sus from "./Sus";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    return (
+        <div className="grid grid-cols-3 grid-rows-4 sm:grid-rows-2 items-center justify-items-center min-h-screen p-2 max-w-6xl mx-auto gap-2">
+            <div className="md:col-span-1 col-span-3 sm:my-0 my-12 max-w-96 row-span-1 w-full h-full flex justify-center flex-col">
+                <div className="text-4xl font-londrina">Let's Map Out</div>
+                <div className="relative">
+                    <Sus
+                        className="absolute -top-2 right-3"
+                        width={25}
+                        height={25}
+                    />
+                    <div className="text-6xl font-londrina text-white mt-3 font-semibold px-3 mr-3 bg-custom-accent">
+                        YC AI Startup School
+                    </div>
+                </div>
+                <div className="mt-8">
+                    <Button className="bg-white text-custom-accent border-2 hover:text-white border-custom-accent shadow-md cursor-pointer text-lg font-semibold  transform transition-all ease-linear duration-[10000ms] hover:pr-[200px] hover:shadow-lg active:scale-95 origin-left">
+                        <Link href="signup">Let's gooooooo</Link>
+                    </Button>
+                </div>
+            </div>
+            <div className="md:block hidden col-span-2 relative row-span-1 border-8 border-stone-900/5 bg-stone-600/5 w-full h-full">
+                <NetworkGraph />
+                {/* <Image
+                    src="/phone.png"
+                    width={100}
+                    height={100}
+                    alt="phone"
+                    className="absolute -bottom-1 overflow-hidden scale-x-[-1] right-20 w-32"
+                /> */}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+                <Sus
+                    className="absolute -bottom-1 scale-x-[-1] left-12"
+                    width={20}
+                    height={20}
+                />
+            </div>
+            <div className="col-span-3 sm:col-span-1 flex flex-col row-span-1 px-3 py-1 bg-stone-600/5 w-full h-full">
+                <div className="text-2xl font-londrina  mt-3 font-semibold">
+                    Mapping out the event
+                </div>
+                <p className="text-sm text-stone-600 font-medium mt-3 mr-12">
+                    The goal is to create a graph visualization of all 2k
+                    attendees at YC AI Startup School and we're all related to
+                    each other.
+                </p>
+                <p className="text-sm text-stone-600  font-medium mt-2 mr-12">
+                    The idea is: say we individually meet 30 people at the
+                    conference, and 100 people share their 30 people they've
+                    met, then combined we can map the SUS network.
+                </p>
+                <div className="flex-1 flex flex-col justify-end">
+                    <div className="pattern w-full h-full mt-6 mb-3"></div>
+                </div>
+            </div>
+            <div className="col-span-3 sm:col-span-1 row-span-1 px-3 py-1 flex flex-col bg-stone-600/5 w-full h-full">
+                <div className="text-2xl font-londrina mt-3 font-semibold">
+                    Relevant Conversation Starters
+                </div>
+                <p className="text-sm text-stone-600 font-medium mt-3 mr-12">
+                    As you meet kids at AI SUS, you show a QR code, and that
+                    adds them to your graph.
+                </p>
+                <p className="text-sm text-stone-600  font-medium mt-2 mr-12">
+                    Let's say you meet Alex and you already scanned Jane into
+                    your network. Since Alex is connected with Jane in the
+                    graph, you say, "Oh alex do you know Jane cuz she goes to
+                    Columbia too!"
+                </p>
+                <div className="flex-1 flex flex-col justify-end">
+                    <div className="pattern w-full h-full mt-6 mb-3"></div>
+                </div>
+            </div>
+            <div className="col-span-3 sm:col-span-1 row-span-1 px-3 py-1 bg-stone-600/5 flex flex-col w-full h-full">
+                <div className="text-2xl font-londrina  mt-3 font-semibold">
+                    <span>Post SUS</span>
+                    <Sus className="inline-block mr-1" width={20} height={20} />
+                    <span>Value</span>
+                </div>
+                <p className="text-sm text-stone-600 font-medium mt-3 mr-12">
+                    Post SUS, I'll combine everyone's network and map out all 2k
+                    attendees. I'm gonna add features that help us stay in
+                    touch.
+                </p>
+                <p className="text-sm text-stone-600 font-medium mt-2 mr-12">
+                    It's still TBD but I'm thinking of something like{" "}
+                    <Link
+                        target="_blank"
+                        href="https://www.boardy.ai/"
+                        className="text-custom-accent font-semibold"
+                    >
+                        boardy.ai
+                    </Link>{" "}
+                    but for the AI SUS network.
+                </p>
+                <div className="flex-1 flex flex-col justify-end">
+                    <div className="pattern w-full h-full mt-6 mb-3"></div>
+                </div>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    );
 }
